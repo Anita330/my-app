@@ -9,6 +9,11 @@ state: present
 apt:
 name: docker
 state: present
+-name: start docker
+service:
+state: started 
+enabled: yes
+
 -name:Install docker-py pythone module
 pip:
 name: docker-py
