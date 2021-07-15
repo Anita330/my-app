@@ -4,6 +4,7 @@ become: True
 tasks:
 -name: Install python pip
 apt:
+name: python pip
 state: present
 -name: Install docker
 apt:
@@ -13,14 +14,14 @@ state: present
 service:
 state: started 
 enabled: yes
-
--name:Install docker-py pythone module
+-name: Install docker-py pythone module
 pip:
 name: docker-py
 state: present 
 -name: start the contailer
 docker-container:
-name:webapp
-image:"anni123456/webapp:{{Docker_TAG}}"
+name: webapp
+image: "anni123456/webapp:{{Docker_TAG}}"
 state: started
-publish port: 0.0.0.0:8080:8080
+published_port: 
+ -0.0.0.0:8080:8080
