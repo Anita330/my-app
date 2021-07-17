@@ -2,26 +2,26 @@
 -hosts: dev
 become: True
 tasks:
--name: Install python pip
-apt:
+- name: Install python pip
+yum:
 name: python pip
 state: present
--name: Install docker
+- name: Install docker
 apt:
 name: docker
 state: present
--name: start docker
+- name: start docker
 service:
 state: started 
 enabled: yes
--name: Install docker-py pythone module
+- name: Install docker-py pythone module
 pip:
 name: docker-py
 state: present 
--name: start the contailer
+- name: start the contailer
 docker-container:
 name: webapp
 image: "anni123456/webapp:{{Docker_TAG}}"
 state: started
-published_port: 
- -0.0.0.0:8080:8080
+published_ports: 
+ - 0.0.0.0:8080:8080
